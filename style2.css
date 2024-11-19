@@ -1,0 +1,322 @@
+/* Background gradient */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #FFDEE9 0%, #B5FFFC 100%);
+    overflow-y: auto; /* Enable vertical scrolling */
+    height: 100vh; /* Ensures the body takes up the full viewport height */
+}
+
+/* Confetti animation for a fun effect */
+.confetti {
+    position: absolute;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(255, 255, 255);
+    animation: confetti 5s linear infinite;
+}
+.confetti:nth-child(2) { left: 25%; animation-delay: 2s; }
+.confetti:nth-child(3) { left: 50%; animation-delay: 4s; }
+.confetti:nth-child(4) { left: 75%; animation-delay: 6s; }
+
+@keyframes confetti {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+.container {
+    border-radius: 8px;
+    padding: 10px;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 50px rgba(255, 5, 5, 0.3);
+    position: relative;
+    max-width: 95%; /* Adjust width for better fit on screens */
+    margin: auto;
+    margin-top: 5px;
+}
+
+/* Text glow effect */
+.box {
+    transition: transform 0.3s ease; /* Smooth transition for hover effects */
+    text-align: center;
+}
+
+.box:hover {
+    transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+#box1, #box2, #box4, #box5, #box6 {
+    animation: glow 8s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+    to { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+}
+
+#box1 {
+    color: rgb(253, 253, 253);
+    font-family: "Permanent Marker", cursive;
+    font-size: 26px;
+    animation: box1 3s backwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes box1 {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+#box2 {
+    font-size: 36px;
+    font-family: "Satisfy", cursive;
+    color: #ff1865;
+    animation: box2 5s backwards;
+    animation-delay: 1.5s;
+}
+
+@keyframes box2 {
+    from { opacity: 0; transform: translateX(-100%) rotate(-120deg); }
+    to { opacity: 1; transform: translateX(0) rotate(0); }
+}
+
+/* Floating animation for the image */
+#box3 {
+    margin-top: 30px;
+    width: 250px;
+    height: 335px;
+    border-radius: 0px;
+    box-shadow: 3px 3px 20px rgb(203, 203, 203), -3px -3px 20px rgb(210, 2, 207);
+    animation: fadeIn 17s forwards, rotate 7s linear infinite, pulse 1.5s infinite;
+    
+}
+
+/* FadeIn effect for box3 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(100px); /* Start below the viewport */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Move to its final position */
+    }
+}
+
+/* Rotation animation */
+@keyframes rotate{
+    0% { transform: rotate(3deg); }
+    50% { transform: rotate(-3deg); }
+    100% { transform: rotate(3deg); }
+}
+
+/* Pulsing animation */
+@keyframes pulse {
+    0%, 100% { box-shadow: 3px 3px 20px rgba(210, 2, 2, 0.7), -3px -3px 20px  rgb(210, 2, 189); }
+    50% { box-shadow: 3px 3px 70px rgba(210, 2, 2, 1), -3px -3px 70px rgb(210, 2, 189); }
+}
+
+#box4, #box5, #box6 {
+    color: whitesmoke;
+    font-family: "Merienda", cursive;
+}
+
+.image-container {
+    display: flex; /* Align images in a row */
+    justify-content: center; /* Center the images horizontally */
+    gap: 10px; /* Add some space between the images */
+}
+
+.image-box {
+    width: 250px;
+    height: auto;
+}
+
+#box4 {
+    margin-top: 40px;
+    padding: 10px;
+    animation: box4 5s backwards;
+    animation-delay: 3s;
+}
+
+@keyframes box4 {
+    from { opacity: 0; transform: translateY(100px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#box5 {
+    font-size: 20px;
+    color: rgb(245, 156, 214);
+    margin-top: 20px;
+    padding: 5px;
+    animation: box5 8s backwards;
+    animation-delay: 4s;
+}
+
+@keyframes box5 {
+    from { opacity: 0; transform: translateY(100px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* General container styling */
+.image-container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping to next row */
+    gap: 10px; /* Spacing between images */
+    padding: 5px;
+    background-color: #000000; /* Optional: Light background for contrast */
+}
+
+/* Styling for individual images */
+.image-container2 .img {
+    position: relative;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    border: 4px solid; /* Border width */
+    border-image-slice: 1;
+    animation: borderColorChange 1s infinite linear; /* Animated border */
+    border-image-source: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet); /* Initial gradient */
+}
+
+.image-container2 .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure images fill the space nicely */
+    animation: zoomInOut 7s infinite ease-in-out; /* Add zooming animation */
+}
+
+/* Keyframes for zooming animation */
+@keyframes zoomInOut {
+    0%, 100% {
+        transform: scale(1); /* Normal size */
+    }
+    50% {
+        transform: scale(1.1); /* Zoom in */
+    }
+}
+
+/* Keyframes for animated border color change */
+@keyframes borderColorChange {
+    0% {
+        border-image-source: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+    }
+    25% {
+        border-image-source: linear-gradient(45deg, violet, red, orange, yellow, green, blue, indigo);
+    }
+    50% {
+        border-image-source: linear-gradient(45deg, indigo, violet, red, orange, yellow, green, blue);
+    }
+    75% {
+        border-image-source: linear-gradient(45deg, blue, indigo, violet, red, orange, yellow, green);
+    }
+    100% {
+        border-image-source: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+    }
+
+}
+
+/* General container styling */
+.image-container3 {
+    position: relative;
+    
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Hide overflowing images */
+   
+}
+
+/* General container styling */
+/* General container styling */
+.image-container3 {
+    display: flex;
+    justify-content: space-around; /* Space between images */
+    align-items: center;
+    gap: 1px; /* Spacing between the images */
+    padding: 0px;
+    height: 500px;
+    flex-wrap: wrap; /* Allow images to wrap to the next row if needed */
+    background-color: #ff0000; /* Dark background for better contrast */
+}
+
+/* General container styling */
+.image-container3 {
+    display: flex;
+    justify-content: space-between; /* Even spacing between images */
+    align-items: center;
+    gap: 5px; /* Space between images */
+    flex-wrap: wrap; /* Allow images to wrap in smaller screens */
+    padding: 0px;
+    background-color: #000000; /* Dark background for better visibility */
+}
+
+/* Styling for individual images */
+.image-container3 .img {
+    width: 150px;
+    height: 150px;
+    animation: bounceIn 3s ease-in-out infinite; /* Infinite bounce animation */
+}
+
+/* Staggered bounce delays */
+.image-container3 .img:nth-child(1) {
+    animation-delay: 0.3s;
+}
+.image-container3 .img:nth-child(2) {
+    animation-delay: 0.6s;
+}
+.image-container3 .img:nth-child(3) {
+    animation-delay: 0.9s;
+}
+.image-container3 .img:nth-child(4) {
+    animation-delay: 1.2s;
+}
+
+/* Styling for images inside */
+.image-container3 .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keep images proportional */
+    border-radius: 70px; /* Rounded corners for a clean look */
+}
+
+/* Keyframes for bounce animation */
+@keyframes bounceIn {
+    0% {
+        transform: translateY(-30px); /* Start off-screen */
+    }
+    50% {
+        transform: translateY(30px); /* Bounce upwards */
+    }
+    100% {
+        transform: translateY(-30px); /* Settle in place */
+    }
+}
+
+
+
+#box6 {
+    padding-right: 10px;
+    color: blanchedalmond;
+    align-self: flex-end;
+    animation: box6 8s backwards;
+    animation-delay: 4.5s;
+}
+
+@keyframes box6 {
+    from { opacity: 0; transform: translateY(100px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    #box1 { font-size: 25px; }
+    #box2 { font-size: 35px; }
+}
